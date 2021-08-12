@@ -1,0 +1,23 @@
+server:
+  port: 8090
+
+# adjust below properties according to your setup
+
+spring:
+  cloud:
+    config:
+      server:
+        git:
+          uri: git-repo-link
+          username: username
+          password: ENC(encrypted_access_token)
+          default-label: main # default master, adjust it according to your default branch
+  security:
+    user:
+      name: name_to_access_config_server
+      password: ENC(encrypted_password)
+
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
